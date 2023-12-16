@@ -1,0 +1,128 @@
+# Expense Tracker API Documentation
+
+## Authentication
+
+### Authenticate User
+
+- **URL:** `/auth/authenticate`
+- **Method:** `GET`
+- **Description:** Authenticates a user.
+- **Controller:** `authController.authenticateUser`
+
+### Sign Up
+
+- **URL:** `/auth/signup`
+- **Method:** `POST`
+- **Description:** Creates a new user account.
+- **Controller:** `authController.signupUser`
+
+### Log In
+
+- **URL:** `/auth/login`
+- **Method:** `POST`
+- **Description:** Logs in a user.
+- **Controller:** `authController.loginUser`
+
+### Log Out
+
+- **URL:** `/auth/logout`
+- **Method:** `GET`
+- **Description:** Logs out the currently authenticated user.
+- **Controller:** `authController.logoutUser`
+
+### Delete User
+
+- **URL:** `/auth/deleteUser/:userId`
+- **Method:** `DELETE`
+- **Description:** Deletes a user account.
+- **Controller:** `authController.deleteUser`
+
+## Categories
+
+### Create Category
+
+- **URL:** `/api/createCategory/:userId`
+- **Method:** `POST`
+- **Description:** Creates a new expense category for a user.
+- **Controller:** `categoryController.createCategory`
+
+### Update Category
+
+- **URL:** `/api/updateCategory/:categoryId`
+- **Method:** `PUT`
+- **Description:** Updates an existing expense category.
+- **Controller:** `categoryController.updateCategory`
+
+### Delete Category
+
+- **URL:** `/api/deleteCategory/:categoryId`
+- **Method:** `DELETE`
+- **Description:** Deletes a specific expense category.
+- **Controller:** `categoryController.deleteCategory`
+
+### Delete All Categories
+
+- **URL:** `/api/deleteAllCategories/:userId`
+- **Method:** `DELETE`
+- **Description:** Deletes all expense categories for a user.
+- **Controller:** `categoryController.deleteAllCategories`
+
+## Expenses
+
+### Create Expense
+
+- **URL:** `/api/createExpense/:userId`
+- **Method:** `POST`
+- **Description:** Creates a new expense for a user.
+- **Controller:** `expenseController.createExpense`
+
+### Update Expense
+
+- **URL:** `/api/updateExpense/:expenseId`
+- **Method:** `PUT`
+- **Description:** Updates an existing expense.
+- **Controller:** `expenseController.updateExpense`
+
+### Delete Expense
+
+- **URL:** `/api/deleteExpense/:expenseId`
+- **Method:** `DELETE`
+- **Description:** Deletes a specific expense.
+- **Controller:** `expenseController.deleteExpense`
+
+### Delete All Expenses
+
+- **URL:** `/api/deleteAllExpenses/:userId`
+- **Method:** `DELETE`
+- **Description:** Deletes all expenses for a user.
+- **Controller:** `expenseController.deleteAllExpenses`
+
+### Get Expenses
+
+- **URL:** `/api/getExpenses/:userId`
+- **Method:** `GET`
+- **Description:** Gets all expenses for a user.
+- **Controller:** `expenseController.getExpenses`
+
+### Get Expense
+
+- **URL:** `/api/getExpense/:expenseId`
+- **Method:** `GET`
+- **Description:** Gets details of a specific expense.
+- **Controller:** `expenseController.getExpense`
+
+## Forgot Password
+
+### Forgot Password
+
+- **URL:** `/auth/forgotPassword`
+- **Method:** `POST`
+- **Description:** Initiates the forgot password process.
+- **Controller:** `forgotPasswordController.forgotPassword`
+
+### Reset Password
+
+- **URL:** `/auth/resetPassword`
+- **Method:** `POST`
+- **Description:** Resets the password after the forgot password process.
+- **Controller:** `forgotPasswordController.resetPassword`
