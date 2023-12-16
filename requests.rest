@@ -1,5 +1,6 @@
 # Expense Tracker API Documentation
 
+
 ## Authentication
 
 ### Authenticate User
@@ -37,6 +38,24 @@
 - **Description:** Deletes a user account.
 - **Controller:** `authController.deleteUser`
 
+
+## Forgot Password
+
+### Forgot Password
+
+- **URL:** `/auth/forgotPassword`
+- **Method:** `POST`
+- **Description:** Initiates the forgot password process.
+- **Controller:** `forgotPasswordController.forgotPassword`
+
+### Reset Password
+
+- **URL:** `/auth/resetPassword`
+- **Method:** `POST`
+- **Description:** Resets the password after the forgot password process.
+- **Controller:** `forgotPasswordController.resetPassword`
+
+
 ## Categories
 
 ### Create Category
@@ -66,6 +85,7 @@
 - **Method:** `DELETE`
 - **Description:** Deletes all expense categories for a user.
 - **Controller:** `categoryController.deleteAllCategories`
+
 
 ## Expenses
 
@@ -110,19 +130,3 @@
 - **Method:** `GET`
 - **Description:** Gets details of a specific expense.
 - **Controller:** `expenseController.getExpense`
-
-## Forgot Password
-
-### Forgot Password
-
-- **URL:** `/auth/forgotPassword`
-- **Method:** `POST`
-- **Description:** Initiates the forgot password process.
-- **Controller:** `forgotPasswordController.forgotPassword`
-
-### Reset Password
-
-- **URL:** `/auth/resetPassword`
-- **Method:** `POST`
-- **Description:** Resets the password after the forgot password process.
-- **Controller:** `forgotPasswordController.resetPassword`
