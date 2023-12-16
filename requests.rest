@@ -72,6 +72,13 @@
 - **Description:** Updates an existing expense category.
 - **Controller:** `categoryController.updateCategory`
 
+### Get Categories For a User
+
+- **URL:** `/api/getCategories/:userId`
+- **Method:** `GET`
+- **Description:** Gets categories for an existing user.
+- **Controller:** `categoryController.getCategories`
+
 ### Delete Category
 
 - **URL:** `/api/deleteCategory/:categoryId`
@@ -121,7 +128,7 @@
 
 - **URL:** `/api/getExpenses/:userId`
 - **Method:** `GET`
-- **Description:** Gets all expenses for a user.
+- **Description:** Gets all expenses for a user with filters.
 - **Controller:** `expenseController.getExpenses`
 
 ### Get Expense
