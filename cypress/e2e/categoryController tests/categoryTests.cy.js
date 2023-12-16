@@ -56,6 +56,13 @@ describe('Category Tests', () => {
         expect(response.body.name).to.eq('Updated Category');
       });
   });
+  it('should get categories for a user', () => {
+    cy.request('GET', `http://localhost:3000/api/getCategories/${createdUserId}`)
+      .should((response) => {
+        expect(response.status).to.eq(200);
+        expect(response.body).to.be.an('array');
+      });
+  });
 
   it('should delete the created category', () => {
     cy.request('DELETE', `http://localhost:3000/api/deleteCategory/${createdCategoryId}`)
@@ -64,6 +71,8 @@ describe('Category Tests', () => {
         expect(response.body.id).to.eq(createdCategoryId);
       });
   });
+
+
 
   it('should delete all categories for a user', () => {
     cy.request('DELETE', `http://localhost:3000/api/deleteAllCategories/${createdUserId}`)

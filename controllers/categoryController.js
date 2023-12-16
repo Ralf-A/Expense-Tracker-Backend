@@ -18,6 +18,27 @@ const createCategory = async (req, res) => {
     }
 };
 
+const getCategories = async (req, res) => {
+    try {
+        const userId = req.params.userId;
+
+        // Debugging statement
+        console.log('Received user ID:', userId);
+
+        // Example: Retrieve all categories for the user from the database
+        const userCategories = await pool.query(
+            "SELECT * FROM categories WHERE user_id = $1",
+            [userId]
+        );
+
+        res.status(200).json(userCategories.rows);
+    } catch (error) {
+        console.error(error.message);
+        res.status(400).json({ error: error.message });
+    }
+};
+
+
 const updateCategory = async (req, res) => {
     try {
         const { name } = req.body;
@@ -94,6 +115,7 @@ const deleteAllCategories = async (req, res) => {
 
 module.exports = {
     createCategory,
+    getCategories,
     updateCategory,
     deleteCategory,
     deleteAllCategories,

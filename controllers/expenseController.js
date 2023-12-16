@@ -86,11 +86,44 @@ const getExpenses = async (req, res) => {
     try {
         const userId = req.params.userId;
 
-        // Example: Retrieve all expenses for the user from the database
-        const userExpenses = await pool.query(
-            "SELECT * FROM expenses WHERE user_id = $1",
-            [userId]
-        );
+        // Example: Build the SQL query dynamically based on the provided filters
+        let query = "SELECT * FROM expenses WHERE user_id = $1";
+        const values = [userId];
+
+        const { category, minAmount, maxAmount, startDate, endDate } = req.query;
+
+        // Add category filter if provided
+        if (category) {
+            query += " AND category = $2";
+            values.push(category);
+        }
+
+        // Add amount range filter if provided
+        if (minAmount !== undefined && maxAmount !== undefined) {
+            query += " AND amount >= $3 AND amount <= $4";
+            values.push(parseFloat(minAmount), parseFloat(maxAmount));
+        } else if (minAmount !== undefined) {
+            query += " AND amount >= $3";
+            values.push(parseFloat(minAmount));
+        } else if (maxAmount !== undefined) {
+            query += " AND amount <= $3";
+            values.push(parseFloat(maxAmount));
+        }
+
+        // Add date range filter if provided
+        if (startDate && endDate) {
+            query += " AND date BETWEEN $5 AND $6";
+            values.push(startDate, endDate);
+        } else if (startDate) {
+            query += " AND date >= $5";
+            values.push(startDate);
+        } else if (endDate) {
+            query += " AND date <= $5";
+            values.push(endDate);
+        }
+
+        // Execute the dynamic query
+        const userExpenses = await pool.query(query, values);
 
         res.status(200).json(userExpenses.rows);
     } catch (error) {
@@ -98,6 +131,7 @@ const getExpenses = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
+
 
 const getExpense = async (req, res) => {
     try {
